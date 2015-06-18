@@ -1,6 +1,6 @@
 # Run this in a path you don't care about, things may get deleted!
 VERSION="1.0"
-BUILD="betable2"
+BUILD="betable3"
 
 set -e -x
 ORIGPWD="$(pwd)"

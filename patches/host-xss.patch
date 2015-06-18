@@ -1,10 +1,13 @@
 diff --git a/src/ngrok/server/http.go b/src/ngrok/server/http.go
-index 6273658..4a027c2 100644
+index 6273658..d3366df 100644
 --- a/src/ngrok/server/http.go
 +++ b/src/ngrok/server/http.go
-@@ -22,7 +22,7 @@ Authorization required
+@@ -20,9 +20,9 @@ Authorization required
+ `
+ 
  	NotFound = `HTTP/1.0 404 Not Found
- Content-Length: %d
+-Content-Length: %d
++Content-Length: 17
  
 -Tunnel %s not found
 +Tunnel not found
