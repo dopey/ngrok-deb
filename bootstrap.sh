@@ -9,10 +9,10 @@ cd $TMP
 trap "rm -rf \"$TMP\"" EXIT INT QUIT TERM
 
 git clone https://github.com/inconshreveable/ngrok
-git co 76ef59fe5d334fc989e8409948d0c357b2750147
 cd ngrok
+git checkout -b head 76ef59fe5d334fc989e8409948d0c357b2750147
 
-patch -p1 < "$DIRNAME/patches/host-xss.patch"
+patch -p1 < "$ORIGPWD/patches/host-xss.patch"
 
 make
 
@@ -20,7 +20,6 @@ mkdir "rootfs"
 mkdir "rootfs/etc"
 mkdir "rootfs/usr"
 cp -r "bin" "rootfs/usr/bin"
-
 
 rm -f "$ORIGPWD/ngrok_${VERSION}-${BUILD}_amd64.deb"
 
