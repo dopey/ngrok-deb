@@ -1,18 +1,19 @@
 # Run this in a path you don't care about, things may get deleted!
-VERSION="1.0"
-BUILD="betable3"
+VERSION="1.7.1"
+BUILD="betable1"
 
 set -e -x
 ORIGPWD="$(pwd)"
 TMP="$(mktemp -d)"
 cd $TMP
-trap "rm -rf \"$TMP\"" EXIT INT QUIT TERM
+#trap "rm -rf \"$TMP\"" EXIT INT QUIT TERM
 
 git clone https://github.com/inconshreveable/ngrok
 cd ngrok
-git checkout -b head 76ef59fe5d334fc989e8409948d0c357b2750147
+git checkout "tags/$VERSION" -B $VERSION
 
 patch -p1 < "$ORIGPWD/patches/host-xss.patch"
+patch -p1 < "$ORIGPWD/patches/log4go-src.patch"
 
 make
 
